@@ -1,0 +1,22 @@
+@font-face {
+    font-family: Fixedsys;
+    src: url("./fonts/Fixedsys.ttf");
+}
+@font-face {
+    font-family: ShareTechMono;
+    src: url("./fonts/ShareTechMono.ttf");
+}
+@font-face {
+    font-family: OCR;
+    src: url("./fonts/OCR.ttf");
+}
+
+.Fixedsys {
+    font-family: Fixedsys;
+}
+.ShareTechMono {
+    font-family: ShareTechMono;
+}
+.OCR {
+    font-family: OCR;
+}

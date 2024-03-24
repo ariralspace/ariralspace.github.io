@@ -1,0 +1,186 @@
+<head>
+    <title>Megacomp - Meadow</title>
+    <link rel="stylesheet" type="text/css" href="./css/fonts.css" />
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: black;
+            overflow: hidden;
+        }
+
+        #loadingContainer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: normal;
+            align-items: center;
+            align-content: center;
+            background-color: black;
+            gap: 32px;
+        }
+
+        #meadowLogo {
+            background-image: url("img/meadow.png");
+            background-size: 100% 100%;
+            flex-basis: 200%;
+            height: 100%;
+        }
+
+        #loadingBar {
+            background-color: rgb(77, 77, 77);
+            width: 100%;
+            height: 64px;
+        }
+
+        #loadingBar>div {
+            background-color: rgb(255, 230, 0);
+            width: 50%;
+            height: 100%;
+            animation: loadingAnimation 1.25s linear infinite;
+        }
+
+        @keyframes loadingAnimation {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes introAnimation {
+            0% {
+                background-image: url("img/intro.gif");
+                transform:scale(1);
+                opacity: 1;
+            }
+            9% {
+                background-image: url("img/intro.gif");
+            }
+            10% {
+                background-image: url("img/computer.png");
+                transform:scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform:scale(5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes zoomInScreen {
+            0% {
+                transform: translate(-50%, -50%) scale(0.2);
+                opacity: 0;
+            }
+            10% {
+                transform: translate(-50%, -50%) scale(0.2);
+            }
+            14% {
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        #introGif {
+            width:100%;
+            height:100%;
+            background-color:black;
+            background-image: url("img/computer.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            opacity: 0;
+        }
+
+        #powerButton {
+            background-image: url("img/power.png");
+            background-size: cover;
+            width:96px;
+            height:96px;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+            background-color: transparent;
+            border: 0px;
+        }
+
+        #powerButton:active {
+            transform:translate(-50%, -50%) scale(0.9);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let el = document.getElementById('meadowLogo');
+
+            (window.onresize = function () {
+                el.style.width = el.clientHeight + 'px';
+            })();
+
+            let powerButton = document.getElementById('powerButton');
+            powerButton.onmousedown = function () {
+                let clickSound = new Audio("./audio/terminalClick.ogg");
+                clickSound.volume = 0.75;
+                clickSound.play();
+            }
+            powerButton.onclick = function () {
+                let clickSound = new Audio("./audio/terminalClick2.ogg");
+                clickSound.volume = 0.75;
+                clickSound.play();
+
+                powerButton.style = "display: none";
+                setTimeout(function () {
+                    let diskSound = new Audio("./audio/pcDiskNoise.ogg");
+                    diskSound.volume = 0.75;
+                    diskSound.play();
+
+                    let introGif = document.getElementById('introGif');
+                    let pcScreen = document.getElementById('pcScreen');
+                    let loadingContainer = document.getElementById('loadingContainer');
+                    introGif.style = "animation: introAnimation 10s cubic-bezier(1,-0.06,.71,1);";
+                    pcScreen.style = "display: block";
+                    el.style.width = el.clientHeight + 'px';
+                    loadingContainer.style = "animation: zoomInScreen 10s cubic-bezier(1,-0.06,.71,1);";
+
+                    let loadingBar = document.getElementById('loadingBar');
+                    loadingBar.style = "opacity: 0";
+                    setTimeout(function () {
+                        let startupSound = new Audio("./audio/pcStartup.ogg");
+                        startupSound.play();
+                        loadingBar.style = "opacity: 1";
+                    }, 2500);
+                    setTimeout(function () {
+                        loadingBar.style = "opacity: 0";
+                        setTimeout(function () {
+                            pcScreen.style = "display: none";
+                        }, 500);
+                    }, 12000);
+                },1000);
+            }
+        });
+    </script>
+    <input type="button" id="powerButton"></div>
+    <div id="introGif" style="display:none"></div>
+    <div id="pcScreen" style="display:none">
+        <div id="loadingContainer">
+            <div id="meadowLogo"></div>
+            <div id="loadingBar">
+                <div></div>
+            </div>
+        </div>
+    </div>
+</body>
