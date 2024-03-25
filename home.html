@@ -1,0 +1,94 @@
+<head>
+    <title>Ariral.Space - Home</title>
+    <link rel="stylesheet" type="text/css" href="./css/default.css" />
+    <link rel="stylesheet" type="text/css" href="./css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="./css/banner.css" />
+    <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
+    <link rel="stylesheet" type="text/css" href="./css/fonts.css" />
+    <meta content="Ariral.space - Voices of the Void Community Site" property="og:title" />
+    <meta content="Powered by Megacomp's Meadow-Server since 1981" property="og:description" />
+    <meta content="https://ariral.space/" property="og:url" />
+    <meta content="https://ariral.space/img/argemia.png" property="og:image" />
+    <meta content="#2e73b8" data-react-helmet="true" name="theme-color" />
+</head>
+
+<body>
+    <script src="./js/removeHtml.js"></script>
+    <div id="mouseContainer">
+        <script src="./js/customCursor.js"></script>
+        <script src="./js/dependencies/marked.min.js"></script>
+        <script src="./js/markdownParser.js"></script>
+        <script src="./js/textDelay.js"></script>
+        <header id="banner">
+            <script>
+                function RandomInt(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1) + min)
+                }
+
+                document.addEventListener('DOMContentLoaded', function () {
+                    const bannerBackground = document.getElementById("bannerBackground");
+                    const trashImages = [
+                        "shrimp.png",
+                        "drive.png"
+                    ];
+
+                    SpawnSpaceTrash();
+
+                    function SpawnSpaceTrash() {
+                        let newTrash = document.createElement("img");
+                        let size = RandomInt(64, 96);
+                        newTrash.width = size;
+                        newTrash.height = size;
+                        newTrash.src = `./img/spacetrash/${trashImages[RandomInt(0, trashImages.length - 1)]}`;
+                        newTrash.className = "spaceTrash";
+                        newTrash.style.top = `${RandomInt(0, 200 - size)}px`;
+
+                        setTimeout(function () {
+                            newTrash.remove();
+                        }, 20000);
+
+                        bannerBackground.appendChild(newTrash);
+
+                        setTimeout(SpawnSpaceTrash, RandomInt(7000, 16000))
+                    }
+                });
+            </script>
+            <div id="bannerBackground"></div>
+            <div id="bannerContainer">
+                <img src="img/argemia.png" width="128" height="128">
+                <div id="bannerText">
+                    <h1 class="Fixedsys">Ariral.space</h1>
+                    <h3 class="Fixedsys">The VotV Community Site</h3>
+                </div>
+            </div>
+        </header>
+        <div id="bodyContent">
+            <nav>
+                <button type="button" onclick="ParseMarkdownPage('./markdown-pages/home.md')">Home</button>
+                <button type="button" onclick="ParseMarkdownPage('./markdown-pages/faq.md')">FAQs</button>
+                <button type="button" onclick="ParseMarkdownPage('./markdown-pages/guides.md')">Guides</button>
+                <button type="button" onclick="ParseMarkdownPage('./markdown-pages/wiki.md')">Wikis</button>
+                <button type="button" onclick="ParseMarkdownPage('./markdown-pages/community.md')">Community</button>
+            </nav>
+            <div id="emailContainer">
+                <div id="emailList" class="emailSide customScroll">
+                </div>
+                <div id="emailContent" class="emailSide">
+                    <div id="emailSender">
+                        <img src="./img/pfp.png" width="36" height="36" style="float:left; padding: 2px">
+                        <span id="emailName" class="Fixedsys" style="color:white">Dr_Gato</span>
+                        <span id="emailDateTime" class="Fixedsys" style="color:cyan">00:00 D:0</span>
+                    </div>
+                    <div id="emailTitle" class="Fixedsys">
+                        <span id="emailTitleText" class="Fixedsys" style="color:white">Text Block</span>
+                    </div>
+                    <div id="emailBody" class="customScroll">
+                        <div id="parsedContent">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

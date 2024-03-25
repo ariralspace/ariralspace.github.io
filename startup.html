@@ -1,9 +1,15 @@
 <head>
     <title>Megacomp - Meadow</title>
     <link rel="stylesheet" type="text/css" href="./css/fonts.css" />
+    <meta content="Ariral.space - Voices of the Void Community Site" property="og:title" />
+    <meta content="Powered by Megacomp's Meadow-Server since 1981" property="og:description" />
+    <meta content="https://ariral.space/" property="og:url" />
+    <meta content="https://ariral.space/img/argemia.png" property="og:image" />
+    <meta content="#2e73b8" data-react-helmet="true" name="theme-color" />
 </head>
 
 <body>
+    <script src="./js/removeHtml.js"></script>
     <style>
         body {
             background-color: black;
@@ -58,19 +64,22 @@
         @keyframes introAnimation {
             0% {
                 background-image: url("img/intro.gif");
-                transform:scale(1);
+                transform: scale(1);
                 opacity: 1;
             }
+
             19% {
                 background-image: url("img/intro.gif");
             }
+
             20% {
                 background-image: url("img/computer.png");
-                transform:scale(1);
+                transform: scale(1);
                 opacity: 1;
             }
+
             100% {
-                transform:scale(5);
+                transform: scale(5);
                 opacity: 0;
             }
         }
@@ -80,24 +89,28 @@
                 transform: translate(-50%, -50%) scale(0.2);
                 opacity: 0;
             }
+
             14% {
                 opacity: 0;
             }
+
             15% {
                 opacity: 1;
             }
+
             20% {
                 transform: translate(-50%, -50%) scale(0.2);
             }
+
             100% {
                 transform: translate(-50%, -50%) scale(1);
             }
         }
 
         #introGif {
-            width:100%;
-            height:100%;
-            background-color:black;
+            width: 100%;
+            height: 100%;
+            background-color: black;
             background-image: url("img/computer.png");
             background-position: center center;
             background-repeat: no-repeat;
@@ -109,18 +122,18 @@
         #powerButton {
             background-image: url("img/power.png");
             background-size: cover;
-            width:96px;
-            height:96px;
-            position:absolute;
-            top:50%;
-            left:50%;
-            transform:translate(-50%, -50%);
+            width: 96px;
+            height: 96px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background-color: transparent;
             border: 0px;
         }
 
         #powerButton:active {
-            transform:translate(-50%, -50%) scale(0.9);
+            transform: translate(-50%, -50%) scale(0.9);
         }
     </style>
     <script>
@@ -139,13 +152,13 @@
             }
             powerButton.onclick = function () {
                 let clickSound = new Audio("./audio/terminalClick2.ogg");
-                clickSound.volume = 0.75;
+                clickSound.volume = 0.25;
                 clickSound.play();
 
                 powerButton.style = "display: none";
                 setTimeout(function () {
                     let diskSound = new Audio("./audio/pcDiskNoise.ogg");
-                    diskSound.volume = 0.75;
+                    diskSound.volume = 0.25;
                     diskSound.play();
 
                     let introGif = document.getElementById('introGif');
@@ -154,12 +167,14 @@
                     introGif.style = "animation: introAnimation 10s cubic-bezier(1,-0.06,.71,1);";
                     pcScreen.style = "display: block";
                     el.style.width = el.clientHeight + 'px';
-                    loadingContainer.style = "animation: zoomInScreen 10s cubic-bezier(1,-0.06,.71,1);";
+                    loadingContainer.style =
+                        "animation: zoomInScreen 10s cubic-bezier(1,-0.06,.71,1);";
 
                     let loadingBar = document.getElementById('loadingBar');
                     loadingBar.style = "opacity: 0";
                     setTimeout(function () {
                         let startupSound = new Audio("./audio/pcStartup.ogg");
+                        startupSound.volume = 0.5
                         startupSound.play();
                         loadingBar.style = "opacity: 1";
                     }, 2500);
@@ -167,9 +182,13 @@
                         loadingBar.style = "opacity: 0";
                         setTimeout(function () {
                             pcScreen.style = "display: none";
+                            setTimeout(function () {
+                                localStorage.setItem("hasBeenBefore", true);
+                                window.location = "./home.html";
+                            }, 1000);
                         }, 500);
                     }, 12000);
-                },1000);
+                }, 1000);
             }
         });
     </script>

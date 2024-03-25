@@ -1,0 +1,36 @@
+:root {
+    --nav-color: #fffb22;
+}
+
+nav {
+    flex: 0 0 auto;
+    width: calc(100% - 20px);
+    height: 60px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    gap: 8px;
+    border: 2px white solid;
+    margin: 4px;
+    padding: 0px 4px;
+}
+
+nav > button {
+    flex: 1;
+    border: 4px var(--nav-color) solid;
+    height: 50px;
+    width: fit-content;
+    padding: 0px 24px 0px 24px;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    color: var(--nav-color);
+
+    text-decoration: none;
+    font-family: Fixedsys;
+    font-size: 32px;
+}

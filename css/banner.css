@@ -1,0 +1,107 @@
+@keyframes bannerScrollA {
+    from {
+        background-position-x: 0px;
+    }
+
+    to {
+        background-position-x: 300px;
+    }
+}
+
+@keyframes bannerScrollB {
+    from {
+        background-position-x: 0px;
+    }
+
+    to {
+        background-position-x: -1000px;
+    }
+}
+
+#banner {
+    width: 100%;
+    height: 200px;
+}
+
+#bannerBackground {
+    position: relative;
+
+    width: 100%;
+    height: 200px;
+    border-bottom: 2px white solid;
+
+    background-image: url("../img/spaceTile.png");
+    background-size: 300px 300px;
+    background-repeat: repeat-x;
+
+    animation: bannerScrollA 40s linear infinite;
+
+    overflow: hidden;
+}
+
+#bannerBackground::after {
+    position: absolute;
+    content: "";
+    top: 0px;
+
+    width: 100%;
+    height: 200px;
+
+    background-image: url("../img/spaceTile.png");
+    background-size: 1000px 1000px;
+    background-repeat: repeat-x;
+    opacity: 0.4;
+
+    overflow: hidden;
+
+    animation: bannerScrollB 30s linear infinite;
+}
+
+#bannerContainer {
+    top: 0%;
+    width: 100%;
+    z-index: 1;
+    display: inline-flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    height: 100%;
+    width: 100%;
+    gap: 8px;
+
+    overflow: hidden;
+}
+
+#bannerText {
+    display: inline-flex;
+    flex-flow: column;
+    justify-content: center;
+    height: 128px;
+}
+
+#bannerText>h1 {
+    margin: 0px;
+}
+
+#bannerText>h3 {
+    text-align: left;
+    margin: 0px;
+    font-size: 24px;
+}
+
+@keyframes spaceTrashAnimation {
+    from {
+        left: calc(100% - 96px);
+        transform: translateX(100%) rotate(0deg);
+    }
+
+    to {
+        left: 0px;
+        transform: translateX(-100%) rotate(-720deg);
+    }
+}
+.spaceTrash {
+    position: absolute;
+    animation: spaceTrashAnimation 20s linear;
+}
