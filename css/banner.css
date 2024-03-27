@@ -36,6 +36,8 @@
 
     animation: bannerScrollA 40s linear infinite;
 
+    pointer-events:none;
+
     overflow: hidden;
 }
 
@@ -55,6 +57,8 @@
     overflow: hidden;
 
     animation: bannerScrollB 30s linear infinite;
+
+    pointer-events:none;
 }
 
 #bannerContainer {
@@ -70,6 +74,8 @@
     width: 100%;
     gap: 8px;
 
+    pointer-events:none;
+
     overflow: hidden;
 }
 
@@ -78,16 +84,22 @@
     flex-flow: column;
     justify-content: center;
     height: 128px;
+
+    pointer-events:none;
 }
 
 #bannerText>h1 {
     margin: 0px;
+
+    pointer-events:none;
 }
 
 #bannerText>h3 {
     text-align: left;
     margin: 0px;
     font-size: 24px;
+
+    pointer-events:none;
 }
 
 @keyframes spaceTrashAnimation {
@@ -103,5 +115,11 @@
 }
 .spaceTrash {
     position: absolute;
+    pointer-events: auto;
     animation: spaceTrashAnimation 20s linear;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }

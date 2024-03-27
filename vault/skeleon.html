@@ -1,0 +1,253 @@
+<head>
+    <meta content="Ariral.space - SKELEON APPEARS!!!" property="og:title" />
+    <meta content="SPOOKY!!!1!!1!11!1" property="og:description" />
+    <meta content="https://ariral.space/" property="og:url" />
+    <meta content="https://ariral.space/img/spacetrash/skull.png" property="og:image" />
+    <meta content="#2e73b8" data-react-helmet="true" name="theme-color" />
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+</head>
+
+<body>
+    <script src="../js/removeHtml.js"></script>
+    <style>
+        * {
+            overflow: hidden;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        #mouseInput {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            z-index: 99;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #fireBackground {
+            background-image: url("../img/halloween/fire.gif");
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            z-index: 0;
+            animation: fadeIn 2s linear;
+        }
+
+        @keyframes bigSkullIntro {
+            0% {
+                top: 50%;
+                right: 50%;
+                transform: translate(50%, -50%) scale(0.25);
+            }
+            50% {
+                top: 50%;
+                right: 50%;
+                transform: translate(50%, -50%) scale(0.25);
+            }
+            100% {
+                top: 0%;
+                right: 16px;
+                transform:scale(1);
+            }
+        }
+
+        #bigSkull {
+            position: absolute;
+            top: 0%;
+            right: 16px;
+            width: 70%;
+            height: 65%;
+            z-index: 1;
+            animation: bigSkullIntro 4s linear;
+        }
+
+        #haloweenerContainer {
+            position: absolute;
+            top: 72px;
+            left: calc(45%);
+            width: 100%;
+            transform: translateX(-50%) translateY(-25%);
+            z-index: 2;
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 2s linear;
+        }
+
+        #hapyHaloweener {
+            position: relative;
+            font-family: ShareTechMono;
+            font-size: 5rem;
+            white-space: pre-wrap;
+            color: white;
+            transform: scaleX(1.5) translate(-25%, 4rem);
+            text-shadow:
+                -0.25rem -0.25rem 0 #000,
+                0.25rem -0.25rem 0 #000,
+                -0.25rem 0.25rem 0 #000,
+                0.25rem 0.25rem 0 #000,
+                -0.25rem -0px 0 #000,
+                0.25rem -0px 0 #000,
+                0px 0.25rem 0 #000,
+                0px -0.25rem 0 #000;
+        }
+
+        .pumpkin {
+            width: 128px;
+            height: 128px;
+        }
+
+        #skeleonAppears {
+            animation: fadeIn 2s linear;
+            z-index: 2;
+            font-family: ShareTechMono;
+            color: white;
+            white-space: pre-wrap;
+            position: absolute;
+            left: 64px;
+            bottom: 0px;
+            overflow: visible;
+            font-size: 10rem;
+            letter-spacing: 1.5rem;
+            text-shadow:
+                -4px -4px 0 #000,
+                4px -4px 0 #000,
+                -4px 4px 0 #000,
+                4px 4px 0 #000,
+                -4px -0px 0 #000,
+                4px -0px 0 #000,
+                0px 4px 0 #000,
+                0px -4px 0 #000;
+        }
+
+        #dance {
+            width: 35%;
+            height: auto;
+            transform:scaleY(0.65) translateY(-50%);
+            position: absolute;
+            left: 64px;
+            top: 50%;
+            z-index: 3;
+            animation: fadeIn 2s linear;
+        }
+
+        #peniJoke {
+            animation: fadeIn 2s linear;
+            position: absolute;
+            transform:scale(2, 1) translateY(-150%);
+            white-space: nowrap;
+            z-index: 3;
+            top:50%;
+            left:75%;
+            font-size: 1.5rem;
+            text-shadow:
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                -2px -0px 0 #000,
+                2px -0px 0 #000,
+                0px 2px 0 #000,
+                0px -2px 0 #000;
+        }
+
+        .spinSkull {
+            width: 12rem;
+            height: 12rem;
+            z-index: 6;
+        }
+
+        .spinSkull:nth-child(2) {
+            transform: translateY(1rem);
+        }
+
+        .spinSkull:nth-child(3) {
+            transform: translate(-1rem, -1rem);
+        }
+
+        #spinSkullContainer {
+            display: flex;
+            flex-flow: row;
+            position:absolute;
+            bottom: 128px;
+            right: 128px;
+            gap: 12px;
+            animation: fadeIn 2s linear;
+        }
+    </style>
+    <script>
+        function StartSpooky() {
+            document.getElementById("mouseInput").remove();
+
+            let spookyAudio = new Audio("../audio/SKLEON.ogg");
+            spookyAudio.volume = 0.5;
+            spookyAudio.play();
+
+            document.getElementById("bigSkull").style = "";
+
+            setTimeout(function () {
+                document.getElementById("fireBackground").style = "";
+            }, 2000)
+
+            setTimeout(function () {
+                document.getElementById("skeleonAppears").style = "";
+            }, 4000)
+
+            setTimeout(function () {
+                document.getElementById("haloweenerContainer").style = "";
+            }, 10000)
+
+            setTimeout(function () {
+                document.getElementById("peniJoke").style = "";
+            }, 15000)
+
+            setTimeout(function () {
+                document.getElementById("dance").style = "";
+            }, 20000)
+
+            setTimeout(function () {
+                document.getElementById("spinSkullContainer").style = "";
+            }, 26000)
+
+            setTimeout(function () {
+                window.location = "../home.html"
+            }, 36000)
+        }
+    </script>
+    <div id="mouseInput" onclick="StartSpooky();"></div>
+    <div id="fireBackground" style="display:none"></div>
+    <img id="bigSkull" style="display:none" src="../img/halloween/SKELEON.png" />
+    <div id="haloweenerContainer" style="display:none">
+        <img class="pumpkin" src="../img/halloween/pumpkin.gif" />
+        <div id="hapyHaloweener">
+            HAPY HALOWEENER
+            !1
+            <div id="peniJoke" style="display:none">pENI JOKE!!!!!!!!!!!!!!!!!!!!</div>
+        </div>
+        <img class="pumpkin" style="transform:translateX(-120px)" src="../img/halloween/pumpkin.gif" />
+    </div>
+    <div id="skeleonAppears" style="display:none">SKELEO
+N APPEARS !!!</div>
+    <img id="dance" style="display:none" src="../img/halloween/dance.gif">
+    <div id="spinSkullContainer" style="display:none">
+        <img class="spinSkull" src="../img/halloween/skullspin.gif" />
+        <img class="spinSkull" src="../img/halloween/skullspin.gif" />
+        <img class="spinSkull" src="../img/halloween/skullspin.gif" />
+    </div>
+</body>

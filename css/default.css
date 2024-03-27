@@ -131,6 +131,7 @@ button {
 #emailName {
     float: left;
     margin: 4px 0px 0px 8px;
+    color: yellow;
 }
 
 #emailTitle {
@@ -147,6 +148,7 @@ button {
 }
 #emailTitleText {
     float: left;
+    color: lime;
     margin: 4px 0px 0px 8px;
 }
 
@@ -162,4 +164,10 @@ button {
 /* Hide Bullet Points */
 #parsedContent > ul {
     list-style-type:none;
+}
+
+/* Markdown */
+code {
+    background-color: #272727;
+    font-family: ShareTechMono;
 }

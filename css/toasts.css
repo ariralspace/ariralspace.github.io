@@ -1,0 +1,107 @@
+#toastContainer {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow:hidden;
+}
+
+#toastRoot {
+    position:relative;
+    top: 100%;
+    left: 100%;
+    display: flex;
+    flex-flow:column;
+    transform: translateY(-100%);
+}
+
+@keyframes toastPopup {
+    0% {
+        position:absolute;
+        bottom: -200px;
+    }
+    14% {
+        position:relative;
+        bottom: 0px;
+    }
+    86% {
+        position:relative;
+        bottom: 0px;
+    }
+    100% {
+        position:absolute;
+        bottom: -200px;
+    }
+}
+
+.toast {
+    transform: translateX(-100%);
+    width: 350px;
+    height: 100px;
+    background-color: #191819;
+    box-shadow: inset 0.2em 0.2em 0em 0 #524F48, inset -0.2em -0.2em 0.2em 0 #131115;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    padding: 0px 12px;
+    animation: toastPopup 7s linear;
+    transition: 1s all;
+    position:absolute;
+    bottom: -200px;
+}
+
+.toastImage {
+    width: 76px;
+    height: 76px;
+}
+
+.toastContent {
+    padding-left: 12px;
+    display: flex;
+    flex-flow: column;
+    font-family: ShareTechMono;
+    height: 100px;
+    padding-top: 28px;
+}
+
+.toastLabel {
+    color: yellow;
+    font-size: 16px;
+}
+
+.toastName {
+    color: cyan;
+    font-size: 20px;
+}
+
+.toastProgress {
+    position: relative;
+    margin-top: 8px;
+    width: 200px;
+    height: 18px;
+    background-color: gray;
+}
+
+.toastProgress>div {
+    width: 90%;
+    height: 18px;
+    background-color: lime;
+}
+
+.toastProgressAmount {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        -1px -0px 0 #000,
+        1px -0px 0 #000,
+        0px 1px 0 #000,
+        0px -1px 0 #000;
+}

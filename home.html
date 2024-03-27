@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="./css/banner.css" />
     <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
     <link rel="stylesheet" type="text/css" href="./css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="./css/toasts.css" />
     <meta content="Ariral.space - Voices of the Void Community Site" property="og:title" />
     <meta content="Powered by Megacomp's Meadow-Server since 1981" property="og:description" />
     <meta content="https://ariral.space/" property="og:url" />
@@ -14,6 +15,7 @@
 
 <body>
     <script src="./js/removeHtml.js"></script>
+    <script src="./js/utilities.js"></script>
     <div id="mouseContainer">
         <script src="./js/customCursor.js"></script>
         <script src="./js/dependencies/marked.min.js"></script>
@@ -21,6 +23,8 @@
         <script src="./js/textDelay.js"></script>
         <header id="banner">
             <script>
+                let spawnedTrash = 0;
+
                 function RandomInt(min, max) {
                     return Math.floor(Math.random() * (max - min + 1) + min)
                 }
@@ -29,19 +33,53 @@
                     const bannerBackground = document.getElementById("bannerBackground");
                     const trashImages = [
                         "shrimp.png",
-                        "drive.png"
+                        "drive.png",
+                        "clipboard.png",
+                        "argemwell.png",
+                        "ItemBox.png",
+                        "medkit.png",
                     ];
 
                     SpawnSpaceTrash();
 
                     function SpawnSpaceTrash() {
+                        spawnedTrash++;
+
                         let newTrash = document.createElement("img");
                         let size = RandomInt(64, 96);
+                        newTrash.setAttribute('draggable', false);
                         newTrash.width = size;
                         newTrash.height = size;
-                        newTrash.src = `./img/spacetrash/${trashImages[RandomInt(0, trashImages.length - 1)]}`;
+                        let trashStyle = trashImages[RandomInt(0, trashImages.length - 1)];
+                        if (spawnedTrash == 20) {
+                            trashStyle = "skull.png"
+                            newTrash.onclick = function () {
+                                window.location = "./vault/skeleon.html";
+                            }
+                        }
+                        newTrash.src = `./img/spacetrash/${trashStyle}`;
                         newTrash.className = "spaceTrash";
                         newTrash.style.top = `${RandomInt(0, 200 - size)}px`;
+
+                        if (trashStyle.includes("shrimp")) {
+                            newTrash.onclick = function () {
+                                let eatSound = new Audio("./audio/eat.ogg");
+                                eatSound.volume = 0.5
+                                eatSound.play();
+
+                                let currentShrimpCount = localStorage.getItem("shrimpsClicked");
+                                if (currentShrimpCount == null || currentShrimpCount == undefined){
+                                    currentShrimpCount = 0;
+                                }
+                                currentShrimpCount++;
+                                if (currentShrimpCount <= 100) {
+                                    AchievementPopup("Feed Argemia", currentShrimpCount, 100, (currentShrimpCount == 100));
+                                }
+                                localStorage.setItem("shrimpsClicked", currentShrimpCount);
+
+                                newTrash.remove();
+                            }
+                        }
 
                         setTimeout(function () {
                             newTrash.remove();
@@ -49,7 +87,7 @@
 
                         bannerBackground.appendChild(newTrash);
 
-                        setTimeout(SpawnSpaceTrash, RandomInt(7000, 16000))
+                        setTimeout(SpawnSpaceTrash, RandomInt(4000, 8000))
                     }
                 });
             </script>
@@ -69,6 +107,7 @@
                 <button type="button" onclick="ParseMarkdownPage('./markdown-pages/guides.md')">Guides</button>
                 <button type="button" onclick="ParseMarkdownPage('./markdown-pages/wiki.md')">Wikis</button>
                 <button type="button" onclick="ParseMarkdownPage('./markdown-pages/community.md')">Community</button>
+                <button type="button" onclick="ParseMarkdownPage('./markdown-pages/options.md')">Options</button>
             </nav>
             <div id="emailContainer">
                 <div id="emailList" class="emailSide customScroll">
@@ -76,11 +115,11 @@
                 <div id="emailContent" class="emailSide">
                     <div id="emailSender">
                         <img src="./img/pfp.png" width="36" height="36" style="float:left; padding: 2px">
-                        <span id="emailName" class="Fixedsys" style="color:white">Dr_Gato</span>
+                        <span id="emailName" class="Fixedsys" style="color:rgb(255, 238, 0)">Text Block</span>
                         <span id="emailDateTime" class="Fixedsys" style="color:cyan">00:00 D:0</span>
                     </div>
                     <div id="emailTitle" class="Fixedsys">
-                        <span id="emailTitleText" class="Fixedsys" style="color:white">Text Block</span>
+                        <span id="emailTitleText" class="Fixedsys" style="color:rgb(30, 255, 0)">Text Block</span>
                     </div>
                     <div id="emailBody" class="customScroll">
                         <div id="parsedContent">
@@ -89,6 +128,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="toastContainer">
+        <script src="./js/toasts.js"></script>
+        <div id="toastRoot">
         </div>
     </div>
 </body>

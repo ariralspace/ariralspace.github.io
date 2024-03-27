@@ -15,14 +15,17 @@ function SplitMarkdownIntoMessages(text) {
     let splitLines = text.split("\n");
     let currentBody = "";
     let currentTitle = "";
+    let currentSender = "";
 
     for (let i = 0; i < splitLines.length; i++) {
         if (splitLines[i].startsWith('# ')) {
             // New Section
             if (currentTitle != "") {
-                CreateEmailPage(currentTitle, currentBody.trim());
+                CreateEmailPage(currentTitle, currentSender.trim(), currentBody.trim());
             }
-            currentTitle = splitLines[i].substring(2);
+            let lineContent = splitLines[i].substring(2).split(" ");
+            currentSender = lineContent.shift();
+            currentTitle = lineContent.join(" ");
             currentBody = "";
         } else {
             // Continue Section
@@ -30,22 +33,22 @@ function SplitMarkdownIntoMessages(text) {
         }
     }
     if (currentTitle != "") {
-        CreateEmailPage(currentTitle, currentBody.trim());
+        CreateEmailPage(currentTitle, currentSender.trim(), currentBody.trim());
     }
 }
 
-function CreateEmailPage(title, body) {
+function CreateEmailPage(title, sender, body) {
     let newEmailButton = document.createElement("button");
     newEmailButton.type = "button";
     newEmailButton.innerText = title;
     document.getElementById("emailList").appendChild(newEmailButton);
 
     newEmailButton.onclick = function () {
-        LoadEmailPage(title, body);
+        LoadEmailPage(title, sender, body);
     }
 }
 
-function LoadEmailPage(title, body) {
+function LoadEmailPage(title, sender, body) {
     const currentTime = new Date();
     const hours = currentTime.getHours().toString().padStart(2, '0');
     const minutes = currentTime.getMinutes().toString().padStart(2, '0');
@@ -55,10 +58,13 @@ function LoadEmailPage(title, body) {
 
     document.getElementById("emailDateTime").innerText = emailDate;
     document.getElementById("emailTitleText").innerText = title;
+    document.getElementById("emailName").innerText = sender;
     let parsedContent = document.getElementById("parsedContent");
     parsedContent.innerHTML = marked.parse(body);
 
     parsedContent.querySelectorAll("li").forEach(elem => elem.innerHTML = "> " + elem.innerHTML);
+    
+    parsedContent.querySelectorAll("script").forEach(elem => eval(elem.innerHTML))
 
     ac.abort();
     ac = new AbortController();

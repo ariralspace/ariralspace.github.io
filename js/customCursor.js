@@ -29,6 +29,10 @@ document.addEventListener("mouseleave", function(event){
 function GetCursorSprite(target){
     let cursorState = target.nodeName.toLowerCase();
 
+    if (target.className == "spaceTrash" && (target.src.includes("shrimp") || target.src.includes("skull"))) {
+        return "cursorpoint.png";
+    }
+
     switch (cursorState) {
         case "button":
         case "a":
