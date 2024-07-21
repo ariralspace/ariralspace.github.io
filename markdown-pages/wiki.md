@@ -9,18 +9,12 @@ This is the Modding Wiki that I (Gato) maintain. It isn't related to the game's 
 If you want to get started modding, you can also check the video below:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FdNlHH4AptM?si=Wuz3ONU6lQcx881n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-# Dr_Gato VotV Secrets Archive (Wiki)
+# Dr_Gato VotV Wiki.gg (Wiki)
 
-In my opinion, the *best* website for VotV information. Feels like an old Y2K Fan Wiki, and I think it fits.
+<img src="./img/wikigg.png" width="256px" style="position:relative;left:50%;transform:translateX(-50%)">
 
-The information is mostly correct and anything you shouldn't be looking for has information for it there as well.
+Currently the most active and supported Wiki, maintained by trusted members of the EternityDev community.
 
-[Click here to visit the VotV Secrets Archive](https://squarezeb.github.io/VOTV-Secrets-Website/index.html)
+The information is currently the most accurate source of VotV information with pages detailing the many events, entities, and secrets of Dunkeltaler forest. Major credit to the wiki writers for clearing up misinformation present from the Fandom Wiki.
 
-# Dr_Gato EternityDev Fandom Wiki (Wiki)
-
-Another good option, though sometimes outdated. It is managed by the community and has a section for VotV.
-
-The most detailed information is usually found there, and I recommend anyone getting into the game who wants to look through a wiki to check this one out.
-
-[Click here to visit the EternityDev Fandom Wiki](https://eternitydev-games.fandom.com/wiki/Voices_of_the_Void)
+[Click here to visit the VotV Wiki.gg](https://voicesofthevoid.wiki.gg/wiki/Voices_of_the_Void_Wiki)

@@ -33,6 +33,10 @@ function GetCursorSprite(target){
         return "cursorpoint.png";
     }
 
+    if (target.className == "clickable") {
+        return "cursorpoint.png";
+    }
+
     switch (cursorState) {
         case "button":
         case "a":
